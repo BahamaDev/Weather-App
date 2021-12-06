@@ -1,0 +1,135 @@
+    <!DOCTYPE html>
+<!-- saved from url=(0145)file:///Users/boaamacbook1/Documents/INTRO%20TO%20PROGRAMMING%20COURSE%20ASSETS/HTML%20CSS%20JAVASCRIPT%20NOTES%20MASTER/To%20Do%20List/todo.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <!-- <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>WeatherApp</title>
+    <link rel="stylesheet" href="weather.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+</head>
+
+<body>  
+
+
+
+    <!-- <p id="description"> Description</p> -->
+
+<div id="inputsection">
+    <input type="text" id="locationinput" placeholder="Enter City">
+    <button id="subbutton">GET WEATHER</button>
+
+
+</div>
+
+
+
+    
+
+<div id="infoboxes">
+ 
+
+    <div id="location"> 
+        <h3> Location </h3> 
+        
+    </div>
+
+
+  
+    
+    <div id="coordinates">
+        <h3>Coordinates</h3> 
+    </div>
+
+     
+
+    
+
+    <div id="temp"><h3> Temperature</h3></div>
+
+    <div id="wind"><h3> Wind Conditions </h3> </div>
+
+    <div id="humidity"> <h3>Humidity</h3> </div>
+
+    <div id="clouds"><h3>Cloud Cover </h3></div>
+
+    <div id="cityImage">
+        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2l0eXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="City Image">
+    </div>
+
+
+
+
+</div>
+
+
+
+ <script>
+
+let locationinput = document.getElementById('locationinput')
+let subbuton = document.getElementById('subbutton')
+
+subbutton.addEventListener("click", 
+
+function getInfo(){
+
+        locationinput = locationinput.value
+      
+
+        let thatURL = 'https://api.openweathermap.org/data/2.5/weather?q='+`${locationinput}`+'&units=Imperial&appid=29aa22e93a2045bd528c3f9169085ae7'
+        fetch(thatURL)
+        .then(response => response.json())
+        .then(data => {
+
+        //verify input
+        console.log(`The location Input was ${locationinput}`)
+        console.log(`Data was gathered for: ${locationinput}`)
+        console.log(data)
+        const newData = data
+
+
+        // connect js to dom
+
+        const location = document.getElementById('location')
+        const cityname = document.getElementById('')
+        const coordinates = document.getElementById('coordinates')
+        const temp = document.getElementById('temp')
+        const wind = document.getElementById('wind')
+        const humidity = document.getElementById('humidity')
+        const clouds = document.getElementById('clouds')
+
+
+            // output the inputs obtained from fetch() function the to dom
+        location.innerHTML +=`<p> Weather in ${newData.name} in ${newData.sys.country} is:`
+
+        coordinates.innerHTML +=`<ul> <li>Long: ${newData.coord.lon} <li> Lat: ${newData.coord.lat} </ul>`
+
+        temp.innerHTML += `<ul><li>${newData.main.temp}<sup>&#8457</sup> </li></ul>`
+
+        wind.innerHTML +=`<ul> <li>Speed: ${newData.wind.speed}<sup>mph</sup></li> <li> Gust: ${newData.wind.gust} </ul> `
+
+        humidity.innerHTML += `<ul><li> ${newData.main.humidity}% </li> </ul> `
+        
+        clouds.innerHTML += `<ul><li>${newData.clouds.all}% </li></ul> `
+
+
+        //reset location input
+        locationinput.value = ' '
+
+        })
+
+        .catch(err => alert("Wrong City")
+        )})
+
+
+
+
+</script>
+
+   
+
+
+
+</body></html>
