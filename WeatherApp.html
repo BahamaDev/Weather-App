@@ -8,6 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+
+    <!-- <script src="https://kit.fontawesome.com/16841fd90d.js" crossorigin="anonymous"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -15,9 +17,8 @@
     <link rel="stylesheet" href="weather.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Gruppo&family=Raleway:wght@100;300;400;700;800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -29,13 +30,15 @@
 
 
     <div class="main-container">
+        <div class="card-label" id="date-section">
 
-        <div id="inputsection">
-            <input type="text" id="locationinput" placeholder="Enter City">
-            <button id="subbutton">GET WEATHER</button>
         </div>
 
 
+        <div id="inputsection">
+            <input type="text" id="locationinput" placeholder="Enter City">
+            <button id="subButton">Get Weather</button>
+        </div>
 
 
 
@@ -43,12 +46,11 @@
         <div id="info-section">
 
 
-
             <!-- Location Card -->
             <div id="location" class="info-card">
                 <h3 class="card-label"> Location </h3>
-                <div class="container icon-container">
-                    <i class="bi bi-globe2" style="font-size: 5rem;"></i>
+                <div class="container icon-container that-icon">
+                    <i class="bi bi-globe2 that-icon" style="font-size:;"></i>
                 </div>
             </div>
 
@@ -58,7 +60,7 @@
             <div id="coordinates" class="info-card">
                 <h3 class="card-label">Coordinates</h3>
                 <div class="container icon-container">
-                    <i class="bi bi-geo" style='font-size: 5rem' ;></i>
+                    <i class="bi bi-geo that-icon" style='font-size:;' ;></i>
                 </div>
             </div>
 
@@ -67,7 +69,7 @@
             <div id="temp" class="info-card">
                 <h3 class="card-label"> Temperature</h3>
                 <div class="container icon-container">
-                    <i class="bi bi-thermometer-half" style="font-size: 5rem;"></i>
+                    <i class="bi bi-thermometer-half that-icon" style="font-size:;"></i>
                 </div>
             </div>
 
@@ -77,7 +79,7 @@
                 <h3 class="card-label"> Wind </h3>
 
                 <div class="container icon-container">
-                    <i class="bi bi-wind" style='font-size: 5rem;'></i>
+                    <i class="bi bi-wind that-icon" style='font-size: auto;'></i>
                 </div>
             </div>
 
@@ -86,7 +88,7 @@
             <div id="humidity" class="info-card">
                 <h3 class="card-label">Humidity</h3>
                 <div class="container icon-container">
-                    <i class="bi bi-moisture" style="font-size: 5rem;"></i>
+                    <i class="bi bi-moisture that-icon" style="font-size:;"></i>
                 </div>
             </div>
 
@@ -95,17 +97,23 @@
             <div id="clouds" class="info-card">
                 <h3 class="card-label">Cloud Cover </h3>
 
-                <div class="container icon-container">
-                    <i class="bi bi-clouds" style="font-size: 5rem;"></i>
+                <div class="container icon-container ">
+                    <i class="bi bi-clouds that-icon" style="font-size:;"></i>
+
                 </div>
 
             </div>
 
 
             <!-- City Image -->
-            <div id="cityImage">
-                <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2l0eXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
-                    alt="City Image">
+            <div id="conditions" class="info-card">
+
+                <h3 class="card-label">Overall Conditions </h3>
+                <div id="conditions"></div>
+
+
+                <!-- <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8Y2l0eXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
+                    alt="City Image"> -->
             </div>
 
 
