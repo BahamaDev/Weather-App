@@ -22,21 +22,29 @@ function validateCycle() {
   }
 }
 
+// returns a new date object with the date and time set to the offset.
+const getDate = (offset) => {
+  let now = new Date();
+  now.setTime(now.getTime() + now.getTimezoneOffset() * 60000); // utc
+  now.setTime(now.getTime() + offset * 1000);
+  return now;
+};
+
 //Fetch and Assign Data from API
 function getInfo() {
-  locationInput = locationInput.value;
+  city = locationInput.value;
 
   let thatURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
-    `${locationInput}` +
+    `${city}` +
     "&units=Imperial&appid=29aa22e93a2045bd528c3f9169085ae7";
 
   fetch(thatURL)
     .then((response) => response.json())
     .then((data) => {
       //verify input
-      console.log(`The location Input was ${locationinput}`);
-      console.log(`Data was gathered for: ${locationinput}`);
+      console.log(`The location Input was ${city}`);
+      console.log(`Data was gathered for: ${city}`);
       console.log(data);
       const newData = data;
 
@@ -52,46 +60,48 @@ function getInfo() {
       let conditions = document.getElementById("conditions");
       let dateSection = document.getElementById("date-section");
 
-      let currentDate = new Date();
-      console.log(currentDate);
+      // let currentDate = new Date();
+      // console.log(currentDate);
 
       // output the inputs obtained from fetch() function the to dom
 
-      date.innerHTML += `${currentDate}`;
-      location.innerHTML += `<div class="output-text"> ${newData.name} in ${newData.sys.country} </div> <div>${newData.timezone}</div> `;
+      // date.innerHTML += `${currentDate}`;
+      location.innerHTML = `<div class="output-text"> ${newData.name} in ${newData.sys.country} </div> <div>${newData.timezone}</div> `;
 
-      coordinates.innerHTML += `<ul class="output-list"> <li> ${newData.coord.lon}<sup>Lon</sup></li> <li> ${newData.coord.lat} <sup>Lat</sup></li> </ul>`;
+      coordinates.innerHTML = `<ul class="output-list"> <li> ${newData.coord.lon}<sup>Lon</sup></li> <li> ${newData.coord.lat} <sup>Lat</sup></li> </ul>`;
 
-      temp.innerHTML += `<div class="output-text">${newData.main.temp}<sup>&#8457</sup></div>`;
+      temp.innerHTML = `<div class="output-text">${newData.main.temp}<sup>&#8457</sup></div>`;
 
-      wind.innerHTML += `<ul class="output-list"> <li>Speed: ${newData.wind.speed}<sup>mph</sup></li> <li> Gust: ${newData.wind.gust} </ul> `;
+      wind.innerHTML = `<ul class="output-list"> <li>Speed: ${newData.wind.speed}<sup>mph</sup></li> <li> Gust: ${newData.wind.gust} </ul> `;
 
-      humidity.innerHTML += `<div class="output-text"> ${newData.main.humidity}% </div> `;
+      humidity.innerHTML = `<div class="output-text"> ${newData.main.humidity}% </div> `;
 
-      clouds.innerHTML += `<div class="output-text">${newData.clouds.all}%</div> `;
+      clouds.innerHTML = `<div class="output-text">${newData.clouds.all}%</div> `;
 
-      conditions.innerHTML += `<div class="output-text">${newData.weather[0].description}</div>`;
+      conditions.innerHTML = `<div class="output-text">${newData.weather[0].description}</div>`;
 
+      getDate(data.timezone);
       //reset location input
-      locationInput.value.reload;
+      locationInput.value = "";
     })
-    .catch((err) => alert("Wrong City"));
+    .catch((err) => {
+      console.log(err);
+      alert("Wrong City");
+    });
 }
 
-/// Functions below reposition data in containers
+// function getTime(offset) {
+//   let today = new Date();
+//   let utc = today.getTime() + today.getTimezoneOffset() * 60000;
+//   let nd = new Date(utc + 360000 * offset);
+//   let a = new Date();
+//   a.getUTCHours(7200);
 
-function getTime(offset) {
-  let today = new Date();
-  let utc = today.getTime() + today.getTimezoneOffset() * 60000;
-  let nd = new Date(utc + 360000 * offset);
-  let a = new Date();
-  a.getUTCHours(7200);
-
-  return "the local Time of " + a.toLocaleString;
-}
+//   return "the local Time of " + a.toLocaleString;
+// }
 
 // }
 
 //TO DO LIST
 //Fix Refresh / Reset / - General Control
-//Add time at location
+//Add current date and time at location
