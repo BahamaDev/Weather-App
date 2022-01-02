@@ -89,19 +89,3 @@ function getInfo() {
       alert("Wrong City");
     });
 }
-
-// function getTime(offset) {
-//   let today = new Date();
-//   let utc = today.getTime() + today.getTimezoneOffset() * 60000;
-//   let nd = new Date(utc + 360000 * offset);
-//   let a = new Date();
-//   a.getUTCHours(7200);
-
-//   return "the local Time of " + a.toLocaleString;
-// }
-
-// }
-
-//TO DO LIST
-//Fix Refresh / Reset / - General Control
-//Add current date and time at location
