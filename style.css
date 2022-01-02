@@ -205,6 +205,10 @@ body {
   animation-fill-mode: forwards;
 }
 
+.timezone-text {
+  font-size: var(--fs-sm);
+}
+
 @media (max-width: 500px) {
   .output-text {
     font-size: var(--fs-sm);
