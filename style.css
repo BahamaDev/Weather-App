@@ -36,7 +36,7 @@ body {
 
 .main-container {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   flex-direction: column;
   width: 100vw;
   margin: 0 auto;
@@ -52,6 +52,9 @@ body {
   flex-wrap: wrap;
   flex-direction: column;
   width: 80%;
+  height: auto;
+  max-height: 30%;
+  padding-bottom: 20px;
   max-width: 600px;
   align-content: center;
   justify-content: center;
@@ -95,11 +98,12 @@ body {
     "temp wind humid"
     "cloud conditions conditions";
   color: white;
-  align-content: center;
+  /* align-content: center; */
   justify-content: space-between;
-  height: 70%;
+  height: auto;
   width: 100%;
   max-width: 700px;
+  /* max-height: 70vh; */
   /* min-width: 300px; */
   margin: 0 auto;
   border-radius: 40px;
@@ -125,7 +129,8 @@ body {
 
 .that-icon {
   margin: 10px;
-  font-size: 5rem;
+  font-size: clamp(2rem, 3rem, 10vw);
+  font-size: 3.5rem;
   /* color: red;  */
   animation-name: load-in;
 
@@ -140,6 +145,7 @@ body {
     font-size: 2.5rem;
   }
 }
+
 /* .icon-container{
   height: auto;
   width: 40px;
@@ -219,6 +225,7 @@ sup {
   font-weight: lighter;
   font-size: 1rem;
 }
+
 .output-list {
   font-size: 2rem;
   list-style: none;
@@ -237,8 +244,7 @@ sup {
   max-height: 100%;
 }
 
-#locationpin {
-}
+#locationpin {}
 
 #coordinates {
   grid-area: coord;

@@ -33,7 +33,8 @@ const getDate = (offset) => {
 
 //Fetch and Assign Data from API
 function getInfo() {
-  city = locationInput.value;
+  // city = locationInput.value;
+  city = "miami"
 
   let thatURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
