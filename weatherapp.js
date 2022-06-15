@@ -8,7 +8,7 @@ let outputText = document.getElementsByClassName("output-text");
 subButton.addEventListener("click", runApp);
 
 function runApp() {
-  getInfo();
+  locationInput !== " " ? getInfo() : alert("Please enter a city");
 }
 
 //Clears existing output text
@@ -33,8 +33,7 @@ const getDate = (offset) => {
 
 //Fetch and Assign Data from API
 function getInfo() {
-  // city = locationInput.value;
-  city = "miami"
+  city = locationInput.value;
 
   let thatURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -70,7 +69,7 @@ function getInfo() {
 
       clouds.innerHTML += `<div class="output-text">${newData.clouds.all}%</div> `;
 
-      conditions.innerHTML += `<div class="output-text">${newData.weather[0].description}</div>`;
+      conditions.innerHTML += `<div class="output-text" id="conditions-report">${newData.weather[0].description}</div>`;
 
       getDate(data.timezone);
 
